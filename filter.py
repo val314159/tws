@@ -66,39 +66,22 @@ def process_line(line):
 
     if args['--scripts'] and contains(line, '<script', 'src=', '</script>'):
 
-        #f"{h[:s]}>{open(m.group(1)).read().strip()}{h[e:]}
-        
         if m := re.search(r"""src="(.*)"[ \t\r\n]*>""", line):
-            #print("MATCH1", m)
-            #print(m.group(1))
             s, e = m.span()
             x = f"{line[:s]}{open(m.group(1)).read().strip()}{line[e:]}"
-            #print("X", x)
             return x
-            pass
         
         if m := re.search(r"""src='(.*)'[ \t\r\n]*>""", line):
-            #print("MATCH2", m)
-            #print(m.group(1))
             s, e = m.span()
             x = f"{line[:s]}{open(m.group(1)).read().strip()}{line[e:]}"
-            #print("X", x)
             return x
-            pass
         
         if m := re.search(r"""src=([^ \t\r\n>]*)[ \t\r\n]*>""", line):
-            #print("MATCH3", m)
-            #print(m.group(1))
             s, e = m.span()
             x = f"{line[:s]}{open(m.group(1)).read().strip()}{line[e:]}"
-            #print("X", x)
             return x
-            pass
 
         pass
-            #print("BY")
-            #exit(1)        
-            #qqqqqq
 
     return line
 

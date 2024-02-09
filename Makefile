@@ -1,6 +1,10 @@
 call:: clean tree all
 all:: build serve
-build::;tailwind -mo docs/site.css
+build:: node_modules
+	tailwind -mo docs/site.css
+	python filter.py <docs/index.html >docs/i.html
+	wc docs/index.html docs/i.html
+node_modules: package.json ; bun i
 serve::;python -mhttp.server 80
 _clean:: clean tree
 realclean:: clean

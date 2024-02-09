@@ -10,7 +10,7 @@ realclean:: clean
 	rm -fr yarn.lock bun.lockb package-lock.json node_modules
 	find . -name '\#*\#' -o -name '.\#*' | xargs rm -fr
 clean::
-	rm -fr docs/site.css docs/x
+	rm -fr docs/site.css docs/index.html docs/x
 	find . -name '*~' -o -name '.*~' | xargs rm -fr
 T=-I .git -I node_modules -I __pycache__
 tree:;tree $T -a

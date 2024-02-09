@@ -1,22 +1,27 @@
 #!/usr/bin/env python
 """
 Usage:
-  PROG <input> <output>
+  PROG <input> <output> [--scripts]
   PROG (-h | --help | --version)
 
 Options:
-  -h, --help  Show this screen and exit.
-  <input>     input file  [- means stdin]
-  <output>    output file [- means stdout]
+  -s, --scripts  process local scripts tags
+  -h, --help     Show this screen and exit.
+  <input>        input file  [- means stdin]
+  <output>       output file [- means stdout]
 """
 
-import os, sys, base64, docopt
+import os, sys, base64, docopt, re
+
 
 __version__ = "1.0.1"
 
+
 doc = __doc__.replace('PROG', sys.argv[0])
 
+
 args = docopt.docopt(doc, version=__version__)
+
 
 def contains(line, *stuff):
     for thing in stuff:
@@ -58,7 +63,43 @@ def process_line(line):
             return line.replace(fname, data)
 
         pass
-    
+
+    if args['--scripts'] and contains(line, '<script', 'src=', '</script>'):
+
+        #f"{h[:s]}>{open(m.group(1)).read().strip()}{h[e:]}
+        
+        if m := re.search(r"""src="(.*)"[ \t\r\n]*>""", line):
+            #print("MATCH1", m)
+            #print(m.group(1))
+            s, e = m.span()
+            x = f"{line[:s]}{open(m.group(1)).read().strip()}{line[e:]}"
+            #print("X", x)
+            return x
+            pass
+        
+        if m := re.search(r"""src='(.*)'[ \t\r\n]*>""", line):
+            #print("MATCH2", m)
+            #print(m.group(1))
+            s, e = m.span()
+            x = f"{line[:s]}{open(m.group(1)).read().strip()}{line[e:]}"
+            #print("X", x)
+            return x
+            pass
+        
+        if m := re.search(r"""src=([^ \t\r\n>]*)[ \t\r\n]*>""", line):
+            #print("MATCH3", m)
+            #print(m.group(1))
+            s, e = m.span()
+            x = f"{line[:s]}{open(m.group(1)).read().strip()}{line[e:]}"
+            #print("X", x)
+            return x
+            pass
+
+        pass
+            #print("BY")
+            #exit(1)        
+            #qqqqqq
+
     return line
 
 

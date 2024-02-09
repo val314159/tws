@@ -14,4 +14,7 @@ clean::
 	find . -name '*~' -o -name '.*~' | xargs rm -fr
 T=-I .git -I node_modules -I __pycache__
 tree:;tree $T -a
-dist:;cd docs ; ../filter.py ../src/index.html index.html
+dist:;cd docs ; ../filter.py ../src/index.html index.html --scripts
+download::
+	cd docs ; wget https://unpkg.com/htmx.org@1.9.10/dist/htmx.min.js
+	cd docs ; wget https://unpkg.com/hyperscript.org@0.9.12/dist/_hyperscript.min.js

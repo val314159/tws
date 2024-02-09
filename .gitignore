@@ -1,3 +1,16 @@
+
+bun.lockb
+yarn.lock
+package-lock.json
+
+*~
+.*~
+
+__pycache__
+
+\#*\#
+.\#*
+
 # Logs
 logs
 *.log

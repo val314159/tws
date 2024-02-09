@@ -3,9 +3,8 @@ all:: build serve
 build:: node_modules
 	tailwind -mo docs/site.css
 	mkdir -p docs/x
-	python filter.py <docs/index.html >docs/i.html
 	python filter.py <docs/index.html >docs/x/index.html
-	wc docs/index.html docs/i.html
+	wc docs/index.html docs/x/index.html
 node_modules: package.json ; bun i
 serve::;python -mhttp.server 80
 clean:: clean tree

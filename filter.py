@@ -55,6 +55,16 @@ favicon_names = [ 'favicon-16x16.png' ,
 
 def process_line(line):
 
+    if contains(line, 'background-image', 'url', '.jpg'):
+
+        if m := re.search(r"""url\((.*)\)""", line):
+            itype = 'image/jpeg'
+            data = f"data:{itype};base64," + read_file64(m.group(1))
+            s, e = m.span(1)
+            return line[:s]+data+line[e:]
+
+        return '<style>' + read_file(css_file) + '</style>\n'
+
     if contains(line, '<link', 'stylesheet', css_file):
         
         return '<style>' + read_file(css_file) + '</style>\n'

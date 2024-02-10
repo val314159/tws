@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 """
 Usage:
-  PROG <input> <output> [--scripts]
+  PROG -C <dir> <input> <output> [--scripts]
+  PROG               <input> <output> [--scripts]
   PROG (-h | --help | --version)
 
 Options:
+  -C, --chdir    process local scripts tags
   -s, --scripts  process local scripts tags
   -h, --help     Show this screen and exit.
   <input>        input file  [- means stdin]
@@ -21,6 +23,9 @@ doc = __doc__.replace('PROG', sys.argv[0])
 
 
 args = docopt.docopt(doc, version=__version__)
+
+
+if args['<dir>']: os.chdir(args['<dir>'])
 
 
 def contains(line, *stuff):

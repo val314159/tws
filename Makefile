@@ -1,5 +1,6 @@
 call:: clean tree all
 all:: build # serve
+as:: all serve
 build:: node_modules docs/site.css dist
 docs/site.css::;tailwind -mo docs/site.css
 node_modules: package.json;bun i

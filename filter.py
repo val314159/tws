@@ -47,8 +47,8 @@ def read_file64(fname):
 css_file = 'site.css'
 
 
-favicon_names = [ 'favicon-16x16.png' ,
-                  'favicon-32x32.png' ,
+favicon_names = [ 'favicon-16x16.pnxg' ,
+                  'favicon-32x32.pnxg' ,
                  ]
 
 

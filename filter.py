@@ -47,8 +47,9 @@ def read_file64(fname):
 css_file = 'site.css'
 
 
-favicon_names = [ 'favicon-16x16.pnxg' ,
-                  'favicon-32x32.pnxg' ,
+favicon_names = [ 'favicon-16x16.png' ,
+                  'favicon-32x32.png' ,
+                  'favicon.ico' ,
                  ]
 
 
@@ -59,36 +60,34 @@ def process_line(line):
         return '<style>' + read_file(css_file) + '</style>\n'
 
     for fname in favicon_names:
-        
-        if contains(line, '<link', 'icon', fname):
-            
-            data = "data:image/png;," + read_file64(fname)
-            
-            return line.replace(fname, data)
 
+        for itype in ('image/png', 'image/png'):
+
+            if contains(line, '<link', 'icon', itype, fname):
+            
+                data = f"data:{itype};base64," + read_file64(fname)
+                
+                return line.replace(fname, data)
+
+            pass
+        
         pass
 
+    def do_img(m, s, e):
+        return line[:s]+">"+open(m.group(1)).read().strip()+line[e:]
+        
     if args['--scripts'] and contains(line, '<script', 'src=', '</script>'):
-        #print("XXX",line)
+
         if 'http' not in line:
-            #print("YYY",line)
         
             if m := re.search(r"""src="(.*)"[ \t\r\n]*>""", line):
-                s, e = m.span()
-                x = f"{line[:s]}>{open(m.group(1)).read().strip()}{line[e:]}"
-                return x
+                return do_img(m, *m.span())
         
             if m := re.search(r"""src='(.*)'[ \t\r\n]*>""", line):
-                s, e = m.span()
-                x = f"{line[:s]}>{open(m.group(1)).read().strip()}{line[e:]}"
-                return x
+                return do_img(m, *m.span())
         
             if m := re.search(r"""src=([^ \t\r\n>]*)[ \t\r\n]*>""", line):
-                #print("ZZZ",line)
-                s, e = m.span()
-                x = f"{line[:s]}>{open(m.group(1)).read().strip()}{line[e:]}"
-                #print("WWW",x)
-                return x
+                return do_img(m, *m.span())
             
             pass
         

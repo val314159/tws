@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 """
 Usage:
-  PROG -C <dir> <input> <output> [--scripts]
-  PROG               <input> <output> [--scripts]
+  PROG [-C <dir>] <input> <output> [--scripts]
   PROG (-h | --help | --version)
 
 Options:
@@ -13,7 +12,7 @@ Options:
   <output>       output file [- means stdout]
 """
 
-import os, sys, base64, docopt, re
+import re, os, sys, base64, docopt
 
 
 __version__ = "1.0.1"
@@ -63,29 +62,36 @@ def process_line(line):
         
         if contains(line, '<link', 'icon', fname):
             
-            data = "data:image/x-icon;," + read_file64(fname)
+            data = "data:image/png;," + read_file64(fname)
             
             return line.replace(fname, data)
 
         pass
 
     if args['--scripts'] and contains(line, '<script', 'src=', '</script>'):
-
-        if m := re.search(r"""src="(.*)"[ \t\r\n]*>""", line):
-            s, e = m.span()
-            x = f"{line[:s]}{open(m.group(1)).read().strip()}{line[e:]}"
-            return x
+        #print("XXX",line)
+        if 'http' not in line:
+            #print("YYY",line)
         
-        if m := re.search(r"""src='(.*)'[ \t\r\n]*>""", line):
-            s, e = m.span()
-            x = f"{line[:s]}{open(m.group(1)).read().strip()}{line[e:]}"
-            return x
+            if m := re.search(r"""src="(.*)"[ \t\r\n]*>""", line):
+                s, e = m.span()
+                x = f"{line[:s]}>{open(m.group(1)).read().strip()}{line[e:]}"
+                return x
         
-        if m := re.search(r"""src=([^ \t\r\n>]*)[ \t\r\n]*>""", line):
-            s, e = m.span()
-            x = f"{line[:s]}{open(m.group(1)).read().strip()}{line[e:]}"
-            return x
-
+            if m := re.search(r"""src='(.*)'[ \t\r\n]*>""", line):
+                s, e = m.span()
+                x = f"{line[:s]}>{open(m.group(1)).read().strip()}{line[e:]}"
+                return x
+        
+            if m := re.search(r"""src=([^ \t\r\n>]*)[ \t\r\n]*>""", line):
+                #print("ZZZ",line)
+                s, e = m.span()
+                x = f"{line[:s]}>{open(m.group(1)).read().strip()}{line[e:]}"
+                #print("WWW",x)
+                return x
+            
+            pass
+        
         pass
 
     return line

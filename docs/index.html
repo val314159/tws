@@ -1,66 +1,65 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/png" href="favicon-32x32.png">
-  <xlink rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-  <xlink rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-  <link rel="stylesheet" href="site.css">
-  <xscript async src="https://unpkg.com/htmx.org@1.9.10/dist/htmx.min.js"></xscript>
-  <xscript async src='https://unpkg.com/hyperscript.org@0.9.12/dist/_hyperscript.min.js'></xscript>
-  <script async src="htmx.min.js"></script>
-  <script async src='_hyperscript.min.js'></script>
-  <script async src=app.js></script>
-  <div class="min-h-screen
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon-32x32.png">
+    <xlink rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <xlink rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="stylesheet" href="site.css">
+    <xscript async src="https://unpkg.com/htmx.org@1.9.10/dist/htmx.min.js"></xscript>
+    <xscript async src='https://unpkg.com/hyperscript.org@0.9.12/dist/_hyperscript.min.js'></xscript>
+    <script defer src="htmx.min.js"></script>
+    <script defer src='hyperscript.min.js'></script>
+    <script async src=app.js></script>
+    <title>The Page Title</title>
+  </head>
+  <body>
+    <div class="min-h-screen
 	      bg-green-100
 	      dark:bg-green-700
 	      ">
-    <title>The Page Title</title>
-    <article class="prose lg:prose-xl">
-      <h1>Garlic bread with cheese: What the science tells us</h1>
-      <p>
-	For years parents have espoused the health benefits of eating garlic bread with cheese to their
-	children, with the food earning such an iconic status in our culture that kids will often dress
-	up as warm, cheesy loaf for Halloween.
+      <article class="prose lg:prose-xl">
+	<h1>Garlic bread with cheese: What the science tells us</h1>
+	<p>
+	  For years parents have espoused the health benefits of eating garlic bread with cheese to their
+	  children, with the food earning such an iconic status in our culture that kids will often dress
+	  up as warm, cheesy loaf for Halloween.
+	</p>
+	<p>
+	  But a recent study shows that the celebrated appetizer may be linked to a series of rabies cases
+	  springing up around the country.
       </p>
-      <p>
-	But a recent study shows that the celebrated appetizer may be linked to a series of rabies cases
-	springing up around the country.
-      </p>
-      <!-- ... -->
-
-      
-      
+	<!-- ... -->
     </article>
 
+      <article class="prose lg:prose-xl">
+	<div class="bg-white dark:bg-slate-800 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl">
+	  <div>
+	    <span class="inline-flex items-center justify-center p-2 bg-indigo-500 rounded-md shadow-lg">
+	      <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><!-- ... --></svg>
+	    </span>
+	  </div>
+	  <h3 class="text-slate-900 dark:text-white mt-5 text-base font-medium tracking-tight">Writes Upside-Down</h3>
+	  <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm">
+	    The Zero Gravity Pen can be used to write in any orientation, including upside-down. It even works in outer space.
+	  </p>
+	</div>
+	
+      </article>
 
-    <article class="prose lg:prose-xl">
-    <div class="bg-white dark:bg-slate-800 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl">
-  <div>
-    <span class="inline-flex items-center justify-center p-2 bg-indigo-500 rounded-md shadow-lg">
-      <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><!-- ... --></svg>
-    </span>
-  </div>
-  <h3 class="text-slate-900 dark:text-white mt-5 text-base font-medium tracking-tight">Writes Upside-Down</h3>
-  <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm">
-    The Zero Gravity Pen can be used to write in any orientation, including upside-down. It even works in outer space.
-  </p>
-</div>
-    
-
-    </article>
-
-    <div class="bg-white dark:bg-slate-800 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl">
-  <div>
-    <span class="inline-flex items-center justify-center p-2 bg-indigo-500 rounded-md shadow-lg">
-      <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><!-- ... --></svg>
-    </span>
-  </div>
-  <h3 class="text-slate-900 dark:text-white mt-5 text-base font-medium tracking-tight">Writes Upside-Down</h3>
-  <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm">
-    The Zero Gravity Pen can be used to write in any orientation, including upside-down. It even works in outer space.
-  </p>
-</div>
-    
-  </div>
+      <div class="bg-white dark:bg-slate-800 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl">
+	<div>
+	  <span class="inline-flex items-center justify-center p-2 bg-indigo-500 rounded-md shadow-lg">
+	    <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><!-- ... --></svg>
+	  </span>
+	</div>
+	<h3 class="text-slate-900 dark:text-white mt-5 text-base font-medium tracking-tight">Writes Upside-Down</h3>
+	<p class="text-slate-500 dark:text-slate-400 mt-2 text-sm">
+	  The Zero Gravity Pen can be used to write in any orientation, including upside-down. It even works in outer space.
+	</p>
+      </div>
+      
+    </div>
+  </body>
 </html>

@@ -61,7 +61,7 @@ def process_line(line):
 
     for fname in favicon_names:
 
-        for itype in ('image/png', 'image/png'):
+        for itype in ('image/png', 'image/x-icon'):
 
             if contains(line, '<link', 'icon', itype, fname):
             

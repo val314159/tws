@@ -16,7 +16,7 @@ T=-I .git -I node_modules -I __pycache__
 tree:;tree $T -a
 dist:
 	mkdir -p docs/x
-	./filter.py -C docs ../src/index.html x/index.html --scripts
+	./filter.py -C docs ../src/index.html x/index.html
 download::
 	cd docs ; wget https://unpkg.com/htmx.org@1.9.10/dist/htmx.min.js
 	cd docs ; wget https://unpkg.com/hyperscript.org@0.9.12/dist/_hyperscript.min.js

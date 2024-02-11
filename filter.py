@@ -83,6 +83,16 @@ def process_line(line):
 
         return '<style>' + read_file(css_file) + '</style>\n'
 
+    if contains(line, 'background-image', 'url', '.webp'):
+
+        if m := re.search(r"""url\((.*)\)""", line):
+            itype = 'image/webp'
+            data = f"data:{itype};base64," + read_file64(m.group(1))
+            s, e = m.span(1)
+            return line[:s]+data+line[e:]
+
+        return '<style>' + read_file(css_file) + '</style>\n'
+
     if contains(line, '<link', 'stylesheet', css_file):
         
         return '<style>' + read_file(css_file) + '</style>\n'

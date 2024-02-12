@@ -3,9 +3,11 @@ all:: build # serve
 as:: all serve
 build:: node_modules docs/site.css dist
 docs/site.css::;tailwind -mo docs/site.css
-node_modules: package.json;bun i
-serve::;python -mhttp.server 80
-clean:: clean tree
+node_modules: package.json;npm i
+P=80
+P=5173
+serve::;python -mhttp.server $P
+clean:: tree
 realclean:: clean
 	rm -fr auto-save-list dist docs/x __pycache__
 	rm -fr yarn.lock bun.lockb package-lock.json node_modules

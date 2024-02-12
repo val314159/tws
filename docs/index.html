@@ -6,6 +6,26 @@
   <xlink rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
   <xlink rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
   <link rel="stylesheet" href="site.css" />
+  <style
+    >
+    body:after{
+    content:"";
+    position:fixed; /* stretch a fixed position to the whole screen */
+    background-attachment:fixed;
+      xposition:absolute; /* stretch a fixed position to the whole screen */
+      top:0;
+      height:100vh; /* fix for mobile browser address bar appearing disappearing */
+      left:0;
+      right:0;
+      z-index:-1; /* needed to keep in the background */
+      background: url(https://www.w3schools.com/css/trolltunga.jpg) center center;
+      xbackground: url(rough-horn-2146181_640.webp) center center;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+  }</style
+     >
   <xscript async src="https://unpkg.com/htmx.org@1.9.10/dist/htmx.min.js"></xscript>
   <xscript async src='https://unpkg.com/hyperscript.org@0.9.12/dist/_hyperscript.min.js'></xscript>
   <script defer src="htmx.min.js"></script>
@@ -21,10 +41,11 @@
     >
   
     <title>The Page Title</title>
- 
-    <div class="hero min-h-screen" style="background-image: url(rough-horn-2146181_640.webp);">
 
-      <div class="navbar absolute top-0 xz-index-10 xxbg-base-100">
+    <div class="zhero min-h-screen" style="background-image: url(rough-horn-2146181_640.webp);background-size:cover">
+    <div class="hero xxmin-h-screen" stxyle="background-imxage: urxl(rough-horn-2146181_640.webp);">
+
+      <div class="navbar xabsolute xtop-0 xz-index-10 xxbg-base-100">
       <div class="navbar-start">
 	<div class="dropdown">
 	  <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
@@ -51,6 +72,7 @@
 	  </div>
 	</button>
       </div>
+    </div>
     </div>
     
       <div class="hero-overlay bg-opacity-60"></div>
@@ -334,6 +356,5 @@
       <a class="link link-hover">Cookie policy</a>
     </nav>
   </footer>
-  
 </html>
 

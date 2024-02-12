@@ -23,3 +23,8 @@ dist:
 download::
 	cd docs ; wget https://unpkg.com/htmx.org@1.9.10/dist/htmx.min.js
 	cd docs ; wget https://unpkg.com/hyperscript.org@0.9.12/dist/_hyperscript.min.js
+publish:: /var/www/html/docs
+/var/www/html/docs::
+	rm -fr $@
+	mkdir  $@
+	cp -r docs/* $@

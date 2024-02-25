@@ -1,11 +1,13 @@
+P=80
+#P=5173
 call:: clean tree all
 all:: build # serve
 as:: all serve
+aw:: all ws
+ws::; python -mbottle ws:app
 build:: node_modules docs/site.css dist
 docs/site.css::;tailwind -mo docs/site.css
 node_modules: package.json;npm i
-P=80
-P=5173
 serve::;python -mhttp.server $P
 clean:: tree
 realclean:: clean

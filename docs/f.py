@@ -8,8 +8,10 @@ def extract(ws, t, attrs, body=''):
     if body: body = ' ' + body
     if m2 := re.match('(.*?)class="(.*?)"(.*)$', attrs):
         cl = m2.group(2).replace(' ', '.')
-        cl = cl.replace(':','__COLON__')
-        cl = cl.replace('/','__SLASH__')
+        #cl = cl.replace(':','__COLON__')
+        #cl = cl.replace('/','__SLASH__')
+        #cl = cl.replace('[','__OPEN___')
+        #cl = cl.replace(']','__CLOSE__')
         cl = cl.strip()
         if x := (m2.group(1) + m2.group(3)).strip():
             print(f"{ws}{t}.{cl}({x}){body}")

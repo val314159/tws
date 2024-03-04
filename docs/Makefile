@@ -26,4 +26,4 @@ xxxi2.html: i2.pug.html
 	>$@
 i2.pug.html: index2.html
 	./f.py  $^ >$@
-clean:: ; rm -fr i2.pug.html i2.html *~
+clean:: ; rm -fr i2.pug.html i2.html i3.html *~
